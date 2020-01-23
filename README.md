@@ -15,7 +15,7 @@ simple app that utilizes node, express and is deployed on heroku
             - name
             - number
             - email 
-            - reservation id
+            - create function to add
             - submit button
         - api routes
             - current reservations
