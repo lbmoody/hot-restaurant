@@ -70,7 +70,7 @@
         $.post("/api/reservations", newReservation)
             .then(function(data) {
                 console.log(data)
-                // alert(`Adding Reservation for ${data.name}`)
+                alert(`Adding Reservation for ${data.name}`)
             });
     });
 </script>

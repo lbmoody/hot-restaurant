@@ -21,21 +21,27 @@
             <a class="btn btn-outline-danger btn-lg" href="/" role="button"><i class="fas fa-home"></i></a>
         </div>
         <section class="mt-4">
-            <div class="card my-2 bg-light">
+            <div class="card my-2">
+                <div class="card-header">
+                    <h5>Tables</h5>
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">Tables</h5>
+                    <div id="tableData">
+        
+                    </div>
                 </div>
             </div>
-            <div id="tableData">
-
-            </div>
-            <div class="card my-2 bg-light">
-                <div class="card-body">
-                    <h5 class="card-title">Reservations</h5>
+        </section>
+        <section class="my-4">
+            <div class="card my-2">
+                <div class="card-header">
+                    <h5>Waitlist</h5>
                 </div>
-            </div>
-            <div id="resData">
-            
+                <div class="card-body">
+                    <div id="resData">
+        
+                    </div>
+                </div>
             </div>
         </section>
     </div>
@@ -60,11 +66,18 @@
 <script type="text/javascript">
     $.get("/api/tables", function(data) {
         console.log(data);
+        table = 0;
         for(const d of data) {
+            table ++;
             $("#tableData").append(
                 `<div class="card my-2">
                     <div class="card-body">
-                        <h5 class="card-title">${d.type}</h5>
+                        <h5 class="card-title">Table #${table}: ${d.name}</h5>
+                        <p class="card-subtitle text-muted"> ${d.id}</p>
+                        <div class="card-text">
+                            <p>${d.phone}</p>
+                            <p>${d.email}</p>
+                        </div>
                     </div>
                 </div>`
             )

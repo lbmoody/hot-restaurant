@@ -31,30 +31,11 @@ const reservations = [
 
 const tables = [
     {
-        "type": "Table 1"
-        ,"seats": "4"
-        , "occupied": false 
+        "name": "Dwayne Johnson"
+        , "id": "00000"
+        , "phone": "303-123-4567"
+        , "email": "therock@gmail.com"
     },
-    {
-        "type": "Table 2"
-        ,"seats": "4"
-        , "occupied": false 
-    },
-    {
-        "type": "Table 3"
-        ,"seats": "4"
-        , "occupied": false 
-    },
-    {
-        "type": "Table 4"
-        ,"seats": "4"
-        , "occupied": false 
-    },
-    {
-        "type": "Table 5"
-        ,"seats": "4"
-        , "occupied": false 
-    }    
 ];
 
 // FRONT-END ROUTES_______________________________________
@@ -83,12 +64,18 @@ app.get("/api/tables", function (req, res) {
 // POST CALL______________________________________________
 app.post("/api/reservations", (req, res) => {
     const newReservation = req.body;
-
-    reservations.push(newReservation);
-    res.json(newReservation);
+    if (tables.length <= 4) {
+        tables.push(newReservation);
+        res.json(newReservation);
+    } else {
+        reservations.push(newReservation);
+        res.json(newReservation);
+    }
 })
 
 
+
+// SERVER LISTEN_________________________________________
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
 });
